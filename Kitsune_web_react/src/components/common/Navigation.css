@@ -1,5 +1,4 @@
 /* src/components/common/Navigation.css */
-
 .navigation {
   position: fixed;
   top: 0;
@@ -26,11 +25,19 @@
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 600;
   color: #1d1d1f;
   text-decoration: none;
   transition: opacity 0.3s;
+}
+
+.logo-image {
+  height: 32px;
+  width: auto;
 }
 
 .nav-logo:hover {
@@ -183,4 +190,12 @@
   .nav-link {
     font-size: 0.8rem;
   }
-}
+@media (max-width: 768px) {
+  .logo-text {
+    display: none;
+  }
+  
+  .logo-image {
+    height: 28px;
+  }
+}}

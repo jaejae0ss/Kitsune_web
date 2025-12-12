@@ -1,0 +1,97 @@
+/* src/pages/About/Skills.css */
+
+.skills-page {
+  width: 100%;
+  padding-top: 48px;
+  min-height: 100vh;
+}
+
+.skills-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 3rem;
+}
+
+.skill-category {
+  background: #f5f5f7;
+  border-radius: 18px;
+  padding: 2.5rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.category-icon {
+  font-size: 2.5rem;
+}
+
+.category-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skill-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1d1d1f;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #0071e3, #0077ed);
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 40px 20px 60px;
+  }
+
+  .skill-category {
+    padding: 2rem;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+  }
+}

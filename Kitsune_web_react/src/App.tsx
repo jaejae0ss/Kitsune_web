@@ -1,17 +1,24 @@
 // src/App.tsx
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navigation from './components/common/Navigation';  // 👈 import
-import Home from './pages/Home.tsx';
+import Navigation from './components/common/Navigation';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Profile from './pages/About/Profile';
+import Skills from './pages/About/Skills';
+import Contact from './pages/About/Contact';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navigation />  {/* 👈 모든 페이지에 표시됨 */}
+      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* 나중에 추가할 라우트들 */}
+        <Route path="/about" element={<About />} />
+        <Route path="/about/profile" element={<Profile />} />
+        <Route path="/about/skills" element={<Skills />} />
+        <Route path="/about/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );

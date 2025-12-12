@@ -3,6 +3,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Navigation.css';
+import logo from '../../assets/Kitsune.png'
 
 const Navigation = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -12,7 +13,12 @@ const Navigation = () => {
       <nav className="navigation">
         <div className="nav-content">
           <Link to="/" className="nav-logo">
-            🏠 Home Lab
+            <img
+            src = {logo}
+            alt = "Home Lab"
+            className="logo-image"
+            />
+            <span className='logo-text'>Home Lab</span>
           </Link>
           
           <div className="nav-links">
@@ -107,19 +113,19 @@ const Navigation = () => {
               <div className="mega-menu-grid">
                 <div className="mega-menu-section">
                   <h3 className="section-title">소개</h3>
-                  <Link to="/about#intro" className="mega-menu-item">
+                  <Link to="/about/profile" className="mega-menu-item">
                     <div className="item-info">
                       <div className="item-title">프로필</div>
                       <div className="item-desc">소개 및 경력</div>
                     </div>
                   </Link>
-                  <Link to="/about#skills" className="mega-menu-item">
+                  <Link to="/about/skills" className="mega-menu-item">
                     <div className="item-info">
                       <div className="item-title">기술 스택</div>
                       <div className="item-desc">사용 기술 및 도구</div>
                     </div>
                   </Link>
-                  <Link to="/about#contact" className="mega-menu-item">
+                  <Link to="/about/contact" className="mega-menu-item">
                     <div className="item-info">
                       <div className="item-title">연락처</div>
                       <div className="item-desc">이메일 및 SNS</div>
