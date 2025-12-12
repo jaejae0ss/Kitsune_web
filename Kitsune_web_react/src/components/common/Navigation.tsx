@@ -29,7 +29,7 @@ const Navigation = () => {
               About
             </span>
             <a 
-              href="https://github.com/your-username" 
+              href="https://github.com/jaejae0ss/" 
               className="nav-link"
               target="_blank" 
               rel="noopener noreferrer"

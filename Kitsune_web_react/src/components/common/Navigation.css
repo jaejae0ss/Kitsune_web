@@ -20,7 +20,8 @@
   height: 48px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 5vw;
   width: 100%;
 }
 
@@ -38,7 +39,7 @@
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 3vw;
   align-items: center;
 }
 
@@ -47,7 +48,7 @@
   text-decoration: none;
   font-size: 0.875rem;
   transition: opacity 0.3s;
-  cursor: pointer;
+  cursor: default;
   padding: 14px 0;
 }
 

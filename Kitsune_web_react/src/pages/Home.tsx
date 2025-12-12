@@ -1,17 +1,17 @@
 // src/pages/Home.tsx
 
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './Home.css';
 
 const Home = () => {
-  // 임시 최근 프로젝트 데이터
   const recentPosts = [
     {
       id: 'network-vlan',
       title: 'VLAN 네트워크 구축',
       description: '3-tier 네트워크 세그멘테이션',
       category: 'Network',
-      image: '/images/network.jpg', // 나중에 실제 이미지로
+      image: '/images/network.jpg',
       color: '#0071e3'
     },
     {
@@ -29,8 +29,55 @@ const Home = () => {
       category: 'Security',
       image: '/images/security.jpg',
       color: '#bf4800'
+    },
+    {
+      id: 'security-firewall-2',
+      title: '방화벽 정책 설계 2',
+      description: 'pfSense 보안 설정',
+      category: 'Security',
+      image: '/images/security.jpg',
+      color: '#bf4800'
+    },
+    {
+      id: 'security-firewall-3',
+      title: '방화벽 정책 설계 3',
+      description: 'pfSense 보안 설정',
+      category: 'Security',
+      image: '/images/security.jpg',
+      color: '#bf4800'
     }
   ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(3);
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (window.innerWidth <= 768) {
+        setCardsPerView(1);  // 작은 화면: 1개
+      } else if (window.innerWidth <= 1024) {
+        setCardsPerView(2);  // 중간 화면: 2개
+      } else {
+        setCardsPerView(3);  // 큰 화면: 3개
+      }
+    };
+
+    updateCardsPerView();
+    window.addEventListener('resize', updateCardsPerView);
+    return () => window.removeEventListener('resize', updateCardsPerView);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => 
+      Math.min(recentPosts.length - cardsPerView, prev + 1)  /* 👈 수정 */
+    );
+  };
+
+  const cardWidth = 100 / cardsPerView;
 
   return (
     <div className="home">
@@ -38,9 +85,7 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-content">
           <h1 className="hero-title">
-            홈 랩으로 시작하는
-            <br />
-            인프라 여정
+            홈 랩으로 시작하는 인프라 여정
           </h1>
           <p className="hero-subtitle">
             실무 환경을 직접 구축하고 운영하며 쌓은 경험들
@@ -65,28 +110,63 @@ const Home = () => {
           </Link>
         </div>
 
-        <div className="projects-showcase">
-          {recentPosts.map((post) => (
-            <Link 
-              key={post.id} 
-              to={`/posts/${post.id}`} 
-              className="project-showcase-card"
+        <div className="carousel-container">
+          <button 
+            className="carousel-button prev" 
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+          >
+            ←
+          </button>
+
+          <div className="projects-showcase-wrapper">
+            <div 
+              className="projects-showcase"
+              style={{
+                transform: `translateX(-${currentIndex * cardWidth}%)`,
+                transition: 'transform 0.5s ease'
+              }}
             >
-              <div 
-                className="card-image"
-                style={{ backgroundColor: post.color }}
-              >
-                {/* 이미지 자리 - 나중에 실제 이미지로 */}
-                <div className="image-placeholder">
-                  {post.category}
-                </div>
-              </div>
-              <div className="card-info">
-                <span className="card-category">{post.category}</span>
-                <h3 className="card-title">{post.title}</h3>
-                <p className="card-description">{post.description}</p>
-              </div>
-            </Link>
+              {recentPosts.map((post) => (
+                <Link 
+                  key={post.id}
+                  to={`/posts/${post.id}`} 
+                  className="project-showcase-card"
+                >
+                  <div 
+                    className="card-image"
+                    style={{ backgroundColor: post.color }}
+                  >
+                    <div className="image-placeholder">
+                      {post.category}
+                    </div>
+                  </div>
+                  <div className="card-info">
+                    <span className="card-category">{post.category}</span>
+                    <h3 className="card-title">{post.title}</h3>
+                    <p className="card-description">{post.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <button 
+            className="carousel-button next" 
+            onClick={handleNext}
+            disabled={currentIndex >= recentPosts.length - cardsPerView} 
+          >
+            →
+          </button>
+        </div>
+
+        <div className="carousel-indicators">
+          {Array.from({ length: recentPosts.length - cardsPerView + 1 }).map((_, index) => ( 
+            <button
+              key={index}
+              className={`indicator ${currentIndex === index ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+            />
           ))}
         </div>
       </section>
