@@ -1,0 +1,540 @@
+/* src/pages/Categories/Categories.css */
+
+/* 공통 페이지 스타일 */
+.categories-detail-page,
+.categories-list-page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ==================== Breadcrumb ==================== */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 40px;
+  font-size: 0.875rem;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  color: #6e6e73;
+}
+
+.breadcrumb-nav a {
+  color: #0071e3;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.breadcrumb-nav a:hover {
+  opacity: 0.7;
+}
+
+.breadcrumb-nav .separator {
+  color: #86868b;
+}
+
+.breadcrumb-nav .current {
+  color: #1d1d1f;
+  font-weight: 500;
+}
+
+/* ==================== Hero Section (카테고리 상세) ==================== */
+.category-hero {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.category-hero-content {
+  text-align: center;
+  color: white;
+}
+
+.category-icon-hero {
+  font-size: 3.5rem;
+  margin-bottom: 0.75rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.category-title-hero {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.category-desc-hero {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.95;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-stats-hero {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.stat-item-hero {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-size: 0.9375rem;
+}
+
+.stat-icon {
+  font-size: 1.125rem;
+}
+
+/* ==================== Hero Section (카테고리 목록) ==================== */
+.categories-hero {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.categories-hero-content {
+  text-align: center;
+}
+
+.categories-title-hero {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.categories-desc-hero {
+  font-size: 1.25rem;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+/* ==================== Projects Section ==================== */
+.projects-content-section {
+  background: #f5f5f7;
+  padding: 60px 0;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-header-projects {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title-projects {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle-projects {
+  font-size: 1.125rem;
+  color: #6e6e73;
+}
+
+/* 카테고리 필터 */
+.category-filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-button {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  background: white;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1d1d1f;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.filter-button:hover {
+  border-color: #0071e3;
+  color: #0071e3;
+}
+
+.filter-button.active {
+  background: #0071e3;
+  color: white;
+  border-color: #0071e3;
+}
+
+/* 프로젝트 그리드 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.project-item-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.project-item-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #0071e3;
+}
+
+.project-card-header {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-icon-large {
+  font-size: 4rem;
+}
+
+.project-card-body {
+  padding: 2rem;
+}
+
+/* src/pages/Categories/Categories.css - 계속 */
+
+.project-item-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.project-item-desc {
+  font-size: 1rem;
+  color: #6e6e73;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.post-count-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #6e6e73;
+}
+
+/* ==================== Categories Section ==================== */
+.categories-content-section {
+  background: #f5f5f7;
+  padding: 60px 0;
+}
+
+.categories-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* 카테고리 그리드 */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.category-item-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-item-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #0071e3;
+}
+
+.category-card-header {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-icon-large {
+  font-size: 5rem;
+}
+
+.category-card-body {
+  padding: 2rem;
+}
+
+.category-item-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.category-item-desc {
+  font-size: 1rem;
+  color: #6e6e73;
+  line-height: 1.6;
+}
+
+/* ==================== Empty State ==================== */
+.empty-projects-state {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: white;
+  border-radius: 20px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 0.5rem;
+}
+
+.empty-subtext {
+  font-size: 1rem;
+  color: #6e6e73;
+}
+
+/* ==================== Loading & Error ==================== */
+.loading,
+.error {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #6e6e73;
+}
+
+/* ==================== 반응형 ==================== */
+@media (max-width: 1024px) {
+  .projects-grid,
+  .categories-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumb-nav {
+    padding: 0.75rem 20px;
+    font-size: 0.8125rem;
+  }
+
+  .category-hero {
+    min-height: 35vh;
+    padding: 40px 0;
+  }
+
+  .hero-content-wrapper,
+  .projects-container,
+  .categories-container {
+    padding: 0 20px;
+  }
+
+  .category-icon-hero {
+    font-size: 3rem;
+  }
+
+  .category-title-hero {
+    font-size: 1.75rem;
+  }
+
+  .category-desc-hero {
+    font-size: 0.9375rem;
+  }
+
+  .categories-title-hero {
+    font-size: 2.5rem;
+  }
+
+  .categories-desc-hero {
+    font-size: 1.125rem;
+  }
+
+  .categories-hero {
+    padding: 40px 0;
+  }
+
+  .projects-content-section,
+  .categories-content-section {
+    padding: 40px 0;
+  }
+
+  .section-title-projects {
+    font-size: 2rem;
+  }
+
+  .projects-grid,
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-item-card,
+  .category-item-card {
+    border-radius: 16px;
+  }
+
+  .project-card-body,
+  .category-card-body {
+    padding: 1.5rem;
+  }
+
+  .category-filter {
+    gap: 0.75rem;
+  }
+
+  .filter-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb-nav {
+    padding: 0.75rem 15px;
+  }
+
+  .category-hero {
+    min-height: 30vh;
+    padding: 30px 0;
+  }
+
+  .category-icon-hero {
+    font-size: 2.5rem;
+  }
+
+  .category-title-hero {
+    font-size: 1.5rem;
+  }
+
+  .category-desc-hero {
+    font-size: 0.875rem;
+  }
+
+  .categories-title-hero {
+    font-size: 2rem;
+  }
+
+  .categories-desc-hero {
+    font-size: 1rem;
+  }
+
+  .categories-hero {
+    padding: 30px 0;
+  }
+
+  .projects-content-section,
+  .categories-content-section {
+    padding: 30px 0;
+  }
+
+  .section-title-projects {
+    font-size: 1.75rem;
+  }
+
+  .project-item-title {
+    font-size: 1.25rem;
+  }
+
+  .category-item-title {
+    font-size: 1.5rem;
+  }
+
+  .project-icon-large {
+    font-size: 3.5rem;
+  }
+
+  .category-icon-large {
+    font-size: 4rem;
+  }
+
+  .filter-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
